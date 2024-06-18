@@ -1,13 +1,18 @@
 import React from 'react'
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom'
-
-import HomePage from './pages/HomePage'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Cards from './components/CourseCards'
+import ViewAllCourses from './components/ViewAllCourses'
 
 const App = () => {
 
     return (
         <>
-            <HomePage />
+            <Navbar />
+            <Hero />
+            <Cards />
+            <ViewAllCourses />
         </>
     )
 }
