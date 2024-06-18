@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CourseCard = ({ course }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -18,7 +19,7 @@ const CourseCard = ({ course }) => {
         <button onClick={() => setShowFullDescription((prevState) => (!prevState))} className='text-purple-500 hover:text-purple-700 mt-2 self-start'>
           {showFullDescription ? 'Less' : 'More'}
         </button>
-        <a href="#" className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mt-4 self-start">Go To Course</a>
+        <Link to={`/courses/${course.id}`} className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mt-4 self-start">Go To Course</Link>
       </div>
     </div>
   );

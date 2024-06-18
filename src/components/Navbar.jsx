@@ -7,7 +7,7 @@ const Navbar = () => {
             <div className='flex items-center'>
                 
                 <Link to="/" >
-                <img className='m-1p-2 size-12' src="src/assets/kbalogo.png" alt="logo image" />
+                <img className='m-1p-2 size-12' src="src/assets/kbalogo.png" alt="logo" />
                 </Link>
             </div>
             <div className='flex justify-center md:justify-end items-center mt-2 md:mt-0 space-x-5 md:space-x-10'>
