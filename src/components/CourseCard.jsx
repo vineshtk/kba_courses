@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Card = ({ course }) => {
+const CourseCard = ({ course }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   let description = course.description;
   if (!showFullDescription) {
@@ -24,4 +24,4 @@ const Card = ({ course }) => {
   );
 };
 
-export default Card;
+export default CourseCard;
