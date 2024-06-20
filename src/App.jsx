@@ -18,8 +18,7 @@ const App = () => {
                     <Route path='/contact' element={<ContactPage />} />
                     <Route path='/courses/:id' element={<CoursePage />} />
                     <Route path='*' element={<NotFoundPage />} />
-                </Route>
-               
+                </Route>          
             </>
         )
     )
