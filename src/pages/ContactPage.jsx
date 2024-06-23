@@ -2,7 +2,7 @@ import React from 'react'
 
 const ContactPage = () => {
   return (
-    <section className="bg-purple-100 my-1 py-10 ">
+    <section className="bg-white my-1 py-10 ">
     <div className="container px-6 py-12 mx-auto">
         <div className="text-center">
             <p className="font-medium text-purple-400 ">Contact us</p>

@@ -48,7 +48,7 @@ const CoursePage = ({removeCourse}) => {
   return (
     <>
  
-      <div className="bg-gray-100 text-gray-900 mb-10 pb-10">   
+      <div className="bg-white text-gray-900 mb-10 pb-10">   
         <div className="max-w-4xl mx-auto p-5 ">
           
           <section>
