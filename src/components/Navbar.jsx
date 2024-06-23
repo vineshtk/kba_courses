@@ -10,13 +10,14 @@ const Navbar = () => {
             <div className='flex items-center'>
 
                 <Link to="/" >
-                    <img className='m-1p-2 size-12' src="src/assets/kbalogo.png" alt="logo" />
+                    <img className='m-1p-2 size-12' src="/src/assets/kbalogo.png" alt="logo" />
                 </Link>
             </div>
             <div className='flex justify-center md:justify-end items-center mt-2 md:mt-0 space-x-5 md:space-x-10'>
                 <NavLink to="/" className={linkStyle}>Home</NavLink>
                 <NavLink to="/courses" className={linkStyle}>Courses</NavLink>
                 <NavLink to="/contact" className={linkStyle}>Contact Us</NavLink>
+                <NavLink to="/add-course" className={linkStyle}>Add Course</NavLink>
             </div>
         </div>
     );
