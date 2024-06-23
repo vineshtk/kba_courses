@@ -19,7 +19,7 @@ const CourseCard = ({ course }) => {
         <button onClick={() => setShowFullDescription((prevState) => (!prevState))} className='text-purple-500 hover:text-purple-700 mt-2 self-start'>
           {showFullDescription ? 'Less' : 'More'}
         </button>
-        <Link to={`/courses/${course.id}`} className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mt-4 self-start">Go To Course</Link>
+        <Link to={`/courses/${course.courseId}`} className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 mt-4 self-start">Go To Course</Link>
       </div>
     </div>
   );
