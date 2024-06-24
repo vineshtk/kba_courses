@@ -10,6 +10,11 @@ import CoursesPage from "./pages/CoursesPage";
 import ContactPage from "./pages/ContactPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import MainLayout from "./layouts/MainLayout";
+
+import AuthLayout from "./layouts/AuthLayout";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+
 import CoursePage, { courseLoader } from "./pages/CoursePage";
 import AddCoursePage from "./pages/AddCoursePage";
 import EditCoursePage from "./pages/EditCoursePage";
@@ -50,10 +55,12 @@ const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+   
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/contact" element={<ContactPage />} />
+
           <Route
             path="/courses/:id"
             element={<CoursePage removeCourse={removeCourse} />}
@@ -72,6 +79,11 @@ const App = () => {
           />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route path="/" element={<AuthLayout />}>
+          <Route index path="/login" element={<LoginPage />} />
+          <Route path="/sign-up" element={<SignupPage />} />
+        </Route>
+
       </>
     )
   );
