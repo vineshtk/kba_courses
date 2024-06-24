@@ -11,10 +11,12 @@ app.listen(PORT, () => {
    console.log(`Server is running on port ${PORT}`);
 });
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors({
    origin: 'http://localhost:3000'
  }));
-app.use('/',routes);
+app.use('/', routes);
 
 mongoose.connect(
    "mongodb://localhost:27017/kba"
@@ -28,6 +30,5 @@ database.on("error", (error) => {
 database.once("connected", () => {
    console.log("Database Connected");
 });
-
 
 

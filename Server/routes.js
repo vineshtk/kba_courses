@@ -1,71 +1,7 @@
 const Router = require("express");
 const courses = require("./models/courses.js");
-const session = require("express-session");
-const cookieParser = require("cookie-parser");
 var router = Router();
 
-// Session handling routes
-
-// Middleware setup
-router.use(
-  session({
-    secret: "vtk",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-
-router.use(cookieParser());
-
-
-// Middleware to check if the user is authenticated
-const isAuthenticated = (req, res, next) => {
-  if (req.session.user) {
-    next();
-  } else {
-    res.redirect("/login");
-  }
-};
-
-// Routes
-router.get("/", isAuthenticated, (req, res) => {
-  res.redirect("/");
-});
-
-router.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
-});
-
-
-router.post("/login", Router.urlencoded({ extended: true }), (req, res) => {
-  const { username, password } = req.body;
-
-  // Check if the provided credentials are valid
-  if (username === "admin" && password === "admin") {
-    // Store user data in the session
-    req.session.user = username;
-    res.cookie("sessionId", req.sessionID);
-
-    res.redirect("/profile");
-  } else {
-    res.send("Invalid credentials. Please try again.");
-  }
-});
-
-router.get("/profile", isAuthenticated, (req, res) => {
-  // Retrieve user data from the session
-  const userData = req.session.user;
-  res.send(`Welcome, ${userData.username}!
-<a href="/logout">Logout</a>`);
-});
-
-router.get("/logout", (req, res) => {
-  // Destroy the session and redirect to the login page
-  req.session.destroy(() => {
-    res.clearCookie("sessionId");
-    res.redirect("/login");
-  });
-});
 
 /////////
 router.post("/courses", async (req, res) => {

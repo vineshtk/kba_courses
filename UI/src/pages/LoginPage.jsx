@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {toast} from 'react-toastify'
 
-const Login = () => {
-  const [userId, setUserId] = useState("");
+
+const LoginPage = ({loginSubmit}) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  
   const submitForm = (e) => {
     e.preventDefault();
     const loginDetails = {
-      userId,
+      email,
       password,
     };
+
+    const res = loginSubmit(loginDetails)
+    toast.success('Successfully logged in')
+    return navigate('/home');
+    
   };
 
   return (
@@ -25,12 +34,12 @@ const Login = () => {
               Email:
             </label>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-6">
@@ -72,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

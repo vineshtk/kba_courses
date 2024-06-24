@@ -20,9 +20,37 @@ import AddCoursePage from "./pages/AddCoursePage";
 import EditCoursePage from "./pages/EditCoursePage";
 
 const App = () => {
+  
+  // login
+  const loginSubmit = async (loginDetails) => {
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginDetails),
+    });
+    return ;
+  };
+
+
+  // signup
+  const signupSubmit = async (userDetails) => {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userDetails),
+    });
+    // return;
+    console.log(res)
+  };
+
+
   // add course
   const addCourse = async (newCourse) => {
-    const res = await fetch("api/courses", {
+    const res = await fetch("/api/courses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,9 +83,13 @@ const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-   
+        <Route path="/" element={<AuthLayout />}>
+          <Route index element={<LoginPage loginSubmit={loginSubmit} />} />
+          <Route path="/sign-up" element={<SignupPage signupSubmit={signupSubmit} />} />
+        </Route>
+
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/contact" element={<ContactPage />} />
 
@@ -79,11 +111,6 @@ const App = () => {
           />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="/" element={<AuthLayout />}>
-          <Route index path="/login" element={<LoginPage />} />
-          <Route path="/sign-up" element={<SignupPage />} />
-        </Route>
-
       </>
     )
   );
